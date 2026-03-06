@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
   signInWithEmailAndPassword,
@@ -17,12 +17,17 @@ export default function LoginPage() {
   const router = useRouter();
   const { user } = useAuth();
 
+  useEffect(() => {
+    if (user) {
+      router.push("/dashboard");
+    }
+  }, [user, router]);
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push("/dashboard");
     } catch (error: any) {
       setError(error.message);
     }
@@ -33,16 +38,10 @@ export default function LoginPage() {
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-      router.push("/dashboard");
     } catch (error: any) {
       setError(error.message);
     }
   };
-
-  if (user) {
-    router.push("/dashboard");
-    return null;
-  }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">

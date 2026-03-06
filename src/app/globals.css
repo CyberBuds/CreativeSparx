@@ -39,3 +39,18 @@ body::before {
     opacity: 0.05;
     z-index: -1;
 }
+
+@layer components {
+  .text-h1 { @apply text-4xl font-extrabold tracking-tight lg:text-5xl xl:text-6xl; }
+  .text-h2 { @apply text-3xl font-bold tracking-tight sm:text-4xl; }
+  .text-h3 { @apply text-2xl font-semibold tracking-tight; }
+  .text-body { @apply text-lg; }
+
+  .btn-primary {
+    @apply bg-primary-gradient text-white font-semibold py-3 px-6 rounded-lg shadow-glow transition-transform transform hover:scale-105;
+  }
+  
+  .btn-secondary {
+    @apply bg-card text-text-primary font-semibold py-3 px-6 rounded-lg border border-border transition-transform transform hover:scale-105 hover:border-brand-primary-from;
+  }
+}

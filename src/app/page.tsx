@@ -7,7 +7,7 @@ export default function LandingPage() {
   return (
     <div className="bg-background text-text-primary">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-h3 font-bold text-transparent bg-clip-text bg-primary-gradient">
             CreativeSparx
@@ -36,7 +36,7 @@ export default function LandingPage() {
 
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-20 text-center bg-primary-gradient">
+        <section className="pt-32 pb-20 mt-20 text-center bg-primary-gradient">
           <div className="container mx-auto px-6">
             <h2 className="text-h1 text-white mb-4">
               Stop Chasing Payments.
