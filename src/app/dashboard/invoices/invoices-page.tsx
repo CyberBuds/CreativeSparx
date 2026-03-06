@@ -26,7 +26,7 @@ export default function InvoicesPage({ invoices: initialInvoices }: InvoicesPage
     };
 
     const filteredInvoices = invoices.filter(invoice =>
-        invoice.invoiceNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (invoice.invoiceNumber || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
         (invoice.clientName || '').toLowerCase().includes(searchTerm.toLowerCase())
     );
 
