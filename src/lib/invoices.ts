@@ -14,7 +14,7 @@ export async function getInvoices(): Promise<Invoice[]> {
                 clientId: invoiceData.clientId,
                 amount: invoiceData.amount,
                 status: invoiceData.status,
-                dueDate: invoiceData.dueDate.toDate(),
+                dueDate: invoiceData.dueDate ? invoiceData.dueDate.toDate() : new Date(),
             };
 
             if (invoice.clientId) {
@@ -54,7 +54,7 @@ export async function getInvoiceById(invoiceId: string): Promise<Invoice | null>
             clientId: invoiceData.clientId,
             amount: invoiceData.amount,
             status: invoiceData.status,
-            dueDate: invoiceData.dueDate.toDate(),
+            dueDate: invoiceData.dueDate ? invoiceData.dueDate.toDate() : new Date(),
         };
 
         if (invoice.clientId) {

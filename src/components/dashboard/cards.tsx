@@ -1,20 +1,39 @@
-import {
-  BanknotesIcon,
-  ClockIcon,
-  UserGroupIcon,
-  InboxIcon,
-} from '@heroicons/react/24/outline';
-import { lusitana } from '../../components/fonts';
-import { fetchCardData } from '../../lib/data';
+import { CreditCardIcon, UsersIcon, CubeIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { fetchCardData } from '@/lib/data';
 
 const iconMap = {
-  collected: BanknotesIcon,
-  customers: UserGroupIcon,
+  collected: CreditCardIcon,
+  customers: UsersIcon,
   pending: ClockIcon,
-  invoices: InboxIcon,
+  invoices: CubeIcon,
 };
 
-export default async function CardWrapper() {
+async function Card({ 
+    title, 
+    value, 
+    type 
+}: {
+    title: string;
+    value: number | string;
+    type: 'invoices' | 'customers' | 'pending' | 'collected';
+}) {
+    const Icon = iconMap[type];
+    return (
+        <div className="p-4 bg-white rounded-lg shadow-md">
+            <div className="flex items-center">
+                <div className={`p-3 bg-gray-200 rounded-full`}>
+                    {Icon ? <Icon className="w-6 h-6 text-gray-700" /> : null}
+                </div>
+                <div className="ml-4">
+                    <p className="text-sm font-medium text-gray-500">{title}</p>
+                    <p className="text-2xl font-bold">{value}</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default async function DashboardCards() {
   const {
     numberOfInvoices,
     numberOfCustomers,
@@ -24,36 +43,14 @@ export default async function CardWrapper() {
 
   return (
     <>
-      <Card title="Collected" value={totalPaidInvoices} type="collected" />
-      <Card title="Pending" value={totalPendingInvoices} type="pending" />
-      <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
-      <Card
-        title="Total Customers"
-        value={numberOfCustomers}
-        type="customers"
-      />
+        <Card title="Collected" value={totalPaidInvoices} type="collected" />
+        <Card title="Pending" value={totalPendingInvoices} type="pending" />
+        <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
+        <Card
+            title="Total Customers"
+            value={numberOfCustomers}
+            type="customers"
+        />
     </>
-  );
-}
-
-export function Card({ title, value, type }: {
-  title: string;
-  value: number | string;
-  type: 'invoices' | 'customers' | 'pending' | 'collected';
-}) {
-  const Icon = iconMap[type];
-
-  return (
-    <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
-      <div className="flex p-4">
-        {Icon ? <Icon className="h-5 w-5 text-gray-700" /> : null}
-        <h3 className="ml-2 text-sm font-medium">{title}</h3>
-      </div>
-      <p
-        className={`${lusitana.className} truncate rounded-xl bg-white px-4 py-8 text-center text-2xl`}
-      >
-        {value}
-      </p>
-    </div>
   );
 }

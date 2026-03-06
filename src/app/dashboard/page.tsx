@@ -1,10 +1,26 @@
+import DashboardLayout from "@/components/DashboardLayout";
+import DashboardCards from "@/components/dashboard/cards";
+import RevenueChart from "@/components/dashboard/revenue-chart";
+import LatestInvoices from "@/components/dashboard/latest-invoices";
+import RecentActivity from "@/components/RecentActivity";
+
 export default function DashboardPage() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <div className="w-full max-w-md px-8 py-6 bg-white rounded-lg shadow-md">
-        <h1 className="mb-6 text-2xl font-bold text-center">Welcome to your Dashboard</h1>
-        <p className="text-center">You are logged in as user@example.com</p>
+    <DashboardLayout>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <DashboardCards />
       </div>
-    </div>
+      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
+        <div className="lg:col-span-5">
+            <RevenueChart />
+        </div>
+        <div className="lg:col-span-3">
+            <LatestInvoices />
+        </div>
+      </div>
+      <div className="mt-6">
+        <RecentActivity />
+      </div>
+    </DashboardLayout>
   );
 }

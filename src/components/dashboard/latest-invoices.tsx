@@ -1,9 +1,8 @@
+
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
-import Image from 'next/image';
 import { lusitana } from '@/components/fonts';
 import { fetchLatestInvoices } from '@/lib/data';
-import { LatestInvoice } from '@/lib/definitions';
 
 export default async function LatestInvoices() {
   const latestInvoices = await fetchLatestInvoices();
@@ -15,7 +14,7 @@ export default async function LatestInvoices() {
       </h2>
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
         <div className="bg-white px-6">
-          {latestInvoices.map((invoice: LatestInvoice, i: number) => {
+          {latestInvoices.map((invoice, i) => {
             return (
               <div
                 key={invoice.id}
@@ -27,13 +26,6 @@ export default async function LatestInvoices() {
                 )}
               >
                 <div className="flex items-center">
-                  <Image
-                    src={invoice.image_url}
-                    alt={`${invoice.name}'s profile picture`}
-                    className="mr-4 rounded-full"
-                    width={32}
-                    height={32}
-                  />
                   <div className="min-w-0">
                     <p className="truncate text-sm font-semibold md:text-base">
                       {invoice.name}
