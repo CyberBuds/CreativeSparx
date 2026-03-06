@@ -1,5 +1,5 @@
-import AuthLayout from '@/components/AuthLayout'
+import OnboardingWizardLayout from '@/components/OnboardingWizardLayout'
 
 export default function OnboardingLayout({ children }: { children: React.ReactNode }) {
-  return <AuthLayout>{children}</AuthLayout>
+  return <OnboardingWizardLayout>{children}</OnboardingWizardLayout>
 }

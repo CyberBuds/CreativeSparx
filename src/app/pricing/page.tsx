@@ -5,6 +5,43 @@ import { useState } from 'react'
 export default function PricingPage() {
   const [isYearly, setIsYearly] = useState(false)
 
+  const plans = [
+    {
+      name: 'Free',
+      price: 0,
+      features: [
+        'Up to 3 Invoices per month',
+        'Up to 5 Clients',
+        'Basic Reporting',
+      ],
+      cta: 'Get Started',
+    },
+    {
+      name: 'Pro',
+      price: isYearly ? 7.20 : 9,
+      features: [
+        'Unlimited Invoices',
+        'Unlimited Clients',
+        'Accept Crypto Payments',
+        'Advanced Reporting',
+        'Priority Support',
+      ],
+      cta: 'Choose Pro',
+      popular: true,
+    },
+    {
+      name: 'Business',
+      price: isYearly ? 23.20 : 29,
+      features: [
+        'All Pro features',
+        'Multi-user access',
+        'Team collaboration tools',
+        'Dedicated account manager',
+      ],
+      cta: 'Choose Business',
+    },
+  ]
+
   return (
     <div className="bg-gray-900 text-white min-h-screen">
       <div className="container mx-auto px-6 py-12">
@@ -20,35 +57,28 @@ export default function PricingPage() {
           <span className="ml-4">Yearly (Save 20%)</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div className="bg-gray-800 p-8 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-4">Free</h2>
-            <p className="text-5xl font-bold mb-4">$0</p>
-            <p className="text-gray-400 mb-8">For freelancers just getting started.</p>
-            <ul className="space-y-4 text-left">
-              <li>Up to 3 Invoices per month</li>
-              <li>Up to 5 Clients</li>
-              <li>Basic Reporting</li>
-            </ul>
-            <a href="/signup" className="mt-8 block w-full text-center px-8 py-4 bg-gray-700 rounded-md text-lg font-semibold">Get Started</a>
-          </div>
-
-          <div className="bg-indigo-700 p-8 rounded-lg shadow-lg relative">
-            <div className="absolute top-0 right-0 -mt-4 mr-4">
-              <span className="bg-indigo-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Most Popular</span>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {plans.map((plan) => (
+            <div key={plan.name} className={`p-8 rounded-lg shadow-lg ${plan.popular ? 'bg-indigo-700' : 'bg-gray-800'}`}>
+              {plan.popular && (
+                <div className="absolute top-0 right-0 -mt-4 mr-4">
+                  <span className="bg-indigo-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Most Popular</span>
+                </div>
+              )}
+              <h2 className="text-2xl font-bold mb-4">{plan.name}</h2>
+              <p className="text-5xl font-bold mb-4">${plan.price}<span className="text-lg">/month</span></p>
+              <p className="text-gray-400 mb-8">{plan.name === 'Pro' ? (isYearly ? 'Billed as $86.40 per year' : 'Billed monthly') : ''}</p>
+              <ul className="space-y-4 text-left">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-center">
+                    <svg className="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <a href="/signup" className={`mt-8 block w-full text-center px-8 py-4 rounded-md text-lg font-semibold ${plan.popular ? 'bg-white text-indigo-700' : 'bg-gray-700'}`}>{plan.cta}</a>
             </div>
-            <h2 className="text-2xl font-bold mb-4">Pro</h2>
-            <p className="text-5xl font-bold mb-4">{isYearly ? '$7.20' : '$9'}<span className="text-lg">/month</span></p>
-            <p className="text-gray-300 mb-8">Billed as {isYearly ? '86.4 USDT per year' : '9 USDT per month'}</p>
-            <ul className="space-y-4 text-left">
-              <li>Unlimited Invoices</li>
-              <li>Unlimited Clients</li>
-              <li>Accept Crypto Payments</li>
-              <li>Advanced Reporting</li>
-              <li>Priority Support</li>
-            </ul>
-            <a href="/signup" className="mt-8 block w-full text-center px-8 py-4 bg-white text-indigo-700 rounded-md text-lg font-semibold">Choose Pro</a>
-          </div>
+          ))}
         </div>
 
         <div className="text-center mt-16">
@@ -65,6 +95,14 @@ export default function PricingPage() {
               <div className="mb-4">
                 <h4 className="text-xl font-bold mb-2">What if I don&apos;t have a crypto wallet?</h4>
                 <p className="text-gray-400">You will need to create a crypto wallet to subscribe to the Pro plan. We recommend using a popular wallet like MetaMask or Trust Wallet.</p>
+            </div>
+            <div className="mb-4">
+                <h4 className="text-xl font-bold mb-2">Is my data secure?</h4>
+                <p className="text-gray-400">We take data security very seriously. All your data is encrypted and stored securely on our servers. We also offer two-factor authentication for added security.</p>
+            </div>
+            <div className="mb-4">
+                <h4 className="text-xl font-bold mb-2">Do you offer integrations with other services?</h4>
+                <p className="text-gray-400">Yes, we offer integrations with a variety of popular services, including accounting software, project management tools, and payment gateways. You can find a full list of our integrations on our website.</p>
             </div>
           </div>
         </div>

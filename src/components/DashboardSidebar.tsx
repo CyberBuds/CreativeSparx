@@ -2,13 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FiHome, FiFileText, FiUsers, FiSettings, FiCreditCard } from 'react-icons/fi';
+import { FiHome, FiFileText, FiUsers, FiSettings, FiCreditCard, FiDollarSign } from 'react-icons/fi';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: FiHome },
   { name: 'Invoices', href: '/dashboard/invoices', icon: FiFileText },
   { name: 'Clients', href: '/dashboard/clients', icon: FiUsers },
   { name: 'Subscription', href: '/dashboard/subscription', icon: FiCreditCard },
+  { name: 'Pricing', href: '/pricing', icon: FiDollarSign },
   { name: 'Settings', href: '/dashboard/settings', icon: FiSettings },
 ];
 

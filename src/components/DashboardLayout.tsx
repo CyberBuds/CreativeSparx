@@ -22,6 +22,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     { href: '/dashboard', label: 'Dashboard' },
     { href: '/dashboard/clients', label: 'Clients' },
     { href: '/dashboard/invoices', label: 'Invoices' },
+    { href: '/dashboard/brief-generator', label: 'Brief Generator' },
+    { href: '/subscription', label: 'Subscription' },
+    { href: '/settings', label: 'Settings' },
   ];
 
   if (loading || !user) {
