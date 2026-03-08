@@ -9,8 +9,8 @@ import {
   GoogleAuthProvider,
   GithubAuthProvider,
 } from 'firebase/auth';
-import { auth } from '../../lib/firebase/client';
-import { useAuth } from '../../context/AuthContext';
+import { auth } from '@/lib/firebase/client';
+import { useAuth } from '@/context/AuthContext';
 import { FiMail, FiLock, FiUser } from 'react-icons/fi';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 
