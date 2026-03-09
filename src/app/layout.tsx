@@ -1,8 +1,11 @@
 
 import "./globals.css";
 import { ThemeProvider } from '@/components/ThemeProvider';
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Plus_Jakarta_Sans} from 'next/font/google';
 import { Suspense } from 'react';
+import { cn } from "@/lib/utils";
+import { GeistSans } from "geist/font/sans";
+
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -15,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={jakarta.variable} suppressHydrationWarning>
+    <html lang="en" className={cn("font-sans", GeistSans.variable, jakarta.variable)} suppressHydrationWarning>
       <body className="bg-background text-text-primary">
         <Suspense>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

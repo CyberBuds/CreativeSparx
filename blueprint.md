@@ -12,11 +12,15 @@ This project is a Next.js dashboard application that displays invoice and revenu
 *   Replaced PostgreSQL data fetching logic with Firestore.
 *   Added `firebase-admin` for server-side Firebase access.
 *   Created a Firebase initialization file (`src/lib/firebase.ts`).
+*   **Demo Mode:** A fully functional demo environment that showcases the application's features with sample data.
+    *   **Demo Banner:** A clear, visually distinct banner to indicate that the user is in a demonstration environment.
+    *   **Demo Dashboard:** A modern, visually appealing dashboard that includes:
+        *   Summary cards for total revenue, invoices, and clients.
+        *   A revenue chart (placeholder).
+        *   A list of the latest invoices.
+    *   **Demo Invoices Page:** A clean and modern table displaying a list of demo invoices.
+    *   **Demo Customers Page:** A similar table for displaying a list of demo customers.
 
 ## Current Plan
 
-The immediate goal is to ensure the application builds successfully after the recent changes. The next steps are:
-
-1.  Run `npm run build` to check for any build errors.
-2.  If the build is successful, continue with the implementation of the client table.
-3.  If the build fails, analyze and fix the errors.
+All planned features for the demo environment are now complete. The application is ready for the next phase of development.

@@ -1,11 +1,30 @@
-
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import { lusitana } from '@/components/fonts';
 import { fetchLatestInvoices } from '@/lib/data';
 
-export default async function LatestInvoices() {
-  const latestInvoices = await fetchLatestInvoices();
+// Define a type for the invoice data to ensure consistency
+type Invoice = {
+  id: string;
+  name: string;
+  email?: string; // Email is optional
+  amount: string | number;
+};
+
+export default async function LatestInvoices({ invoices: initialInvoices }: { invoices?: any[] }) {
+  let latestInvoices: Invoice[];
+
+  if (initialInvoices) {
+    // If demo data is provided, map it to the expected Invoice format
+    latestInvoices = initialInvoices.map(inv => ({
+      ...inv,
+      name: inv.customer, // Map 'customer' to 'name'
+      amount: `$${(inv.amount / 100).toFixed(2)}` // Format amount
+    }));
+  } else {
+    // Otherwise, fetch the latest invoices as usual
+    latestInvoices = await fetchLatestInvoices();
+  }
 
   return (
     <div className="flex w-full flex-col md:col-span-4">
@@ -30,9 +49,11 @@ export default async function LatestInvoices() {
                     <p className="truncate text-sm font-semibold md:text-base">
                       {invoice.name}
                     </p>
-                    <p className="hidden text-sm text-gray-500 sm:block">
-                      {invoice.email}
-                    </p>
+                    {invoice.email && (
+                      <p className="hidden text-sm text-gray-500 sm:block">
+                        {invoice.email}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <p

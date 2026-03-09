@@ -14,6 +14,7 @@ const config: Config = {
       },
       colors: {
         background: 'var(--color-background)',
+        foreground: 'var(--color-text-primary)',
         card: 'var(--color-card)',
         'text-primary': 'var(--color-text-primary)',
         'text-secondary': 'var(--color-text-secondary)',
