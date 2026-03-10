@@ -61,7 +61,7 @@ export default function PricingPage() {
           {plans.map((plan) => (
             <div key={plan.name} className={`p-8 rounded-lg shadow-lg ${plan.popular ? 'bg-indigo-700' : 'bg-gray-800'}`}>
               {plan.popular && (
-                <div className="absolute top-0 right-0 -mt-4 mr-4">
+                <div className="absolute top-20 right-0 mt-4 mr-4">
                   <span className="bg-indigo-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Most Popular</span>
                 </div>
               )}

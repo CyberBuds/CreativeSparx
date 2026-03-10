@@ -1,3 +1,4 @@
+
 'use client'
 
 import Link from 'next/link';
@@ -6,37 +7,10 @@ import { FiBox, FiDollarSign, FiUsers, FiTrendingUp } from 'react-icons/fi';
 export default function LandingPage() {
   return (
     <div className="bg-background text-text-primary">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-h3 font-bold text-transparent bg-clip-text bg-primary-gradient">
-            CreativeSparx
-          </h1>
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="#features" className="text-text-secondary hover:text-text-primary transition-colors">
-              Features
-            </Link>
-            <Link href="#pricing" className="text-text-secondary hover:text-text-primary transition-colors">
-              Pricing
-            </Link>
-            <Link href="#faq" className="text-text-secondary hover:text-text-primary transition-colors">
-              FAQ
-            </Link>
-          </nav>
-          <div className="flex items-center space-x-4">
-            <Link href="/login" className="text-text-secondary hover:text-text-primary transition-colors">
-              Login
-            </Link>
-            <Link href="/signup" className="btn-primary">
-              Get Started
-            </Link>
-          </div>
-        </div>
-      </header>
 
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-20 mt-20 text-center bg-primary-gradient">
+        <section className="pt-32 pb-20 text-center bg-primary-gradient">
           <div className="container mx-auto px-6">
             <h2 className="text-h1 text-white mb-4">
               Stop Chasing Payments.
@@ -210,12 +184,6 @@ export default function LandingPage() {
 
       </main>
 
-      {/* Footer */}
-      <footer className="bg-background py-8">
-        <div className="container mx-auto px-6 text-center text-text-muted">
-          <p>&copy; 2024 CreativeSparx. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   );
 }
