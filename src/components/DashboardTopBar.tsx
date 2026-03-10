@@ -10,7 +10,7 @@ export default function DashboardTopBar() {
     const toggleTheme = () => {
       setTheme(theme === 'dark' ? 'light' : 'dark');
     };
-    const handleSearch = (e) => {
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
         console.log("Search:", e.target.value);
       };
