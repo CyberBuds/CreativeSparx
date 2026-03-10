@@ -1,18 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 import { FiUser, FiMail, FiMessageSquare, FiMapPin, FiPhone, FiSend } from 'react-icons/fi';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSent, setIsSent] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Here you would typically send the form data to a server
     console.log('Form submitted:', formData);
@@ -29,7 +29,7 @@ export default function ContactPage() {
             Get in Touch
           </h1>
           <p className="text-body text-text-secondary mt-4 max-w-2xl mx-auto">
-            We'd love to hear from you! Whether you have a question about our features, pricing, or anything else, our team is ready to answer all your questions.
+            We&apos;d love to hear from you! Whether you have a question about our features, pricing, or anything else, our team is ready to answer all your questions.
           </p>
         </div>
       </section>
@@ -45,7 +45,7 @@ export default function ContactPage() {
                 <div className="text-center p-8 bg-background rounded-lg">
                   <FiSend className="text-5xl text-primary mx-auto mb-4" />
                   <h3 className="text-h3 mb-2">Message Sent!</h3>
-                  <p className="text-text-secondary">Thank you for reaching out. We'll get back to you as soon as possible.</p>
+                  <p className="text-text-secondary">Thank you for reaching out. We&apos;ll get back to you as soon as possible.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
