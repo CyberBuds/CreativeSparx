@@ -7,6 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { Toaster } from 'sonner';
 import DashboardSidebar from './DashboardSidebar'; // Import the sidebar component
+import DashboardSkeleton from './DashboardSkeleton';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
@@ -19,7 +20,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }, [user, loading, router]);
 
   if (loading || !user) {
-    return <p>Loading...</p>;
+    return <DashboardSkeleton />;
   }
 
   return (

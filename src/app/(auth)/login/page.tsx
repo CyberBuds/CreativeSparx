@@ -11,13 +11,14 @@ import {
 } from 'firebase/auth';
 import { auth } from '@/lib/firebase/client';
 import { useAuth } from '@/context/AuthContext';
-import { FiMail, FiLock } from 'react-icons/fi';
+import { FiMail, FiLock, FiLoader } from 'react-icons/fi';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { user } = useAuth();
 
@@ -30,21 +31,27 @@ export default function LoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+    setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       router.push('/dashboard');
     } catch (error: any) {
       setError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleSocialLogin = async (provider: GoogleAuthProvider | GithubAuthProvider) => {
     setError(null);
+    setLoading(true);
     try {
       await signInWithPopup(auth, provider);
       router.push('/dashboard');
     } catch (error: any) {
       setError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -97,8 +104,16 @@ export default function LoginPage() {
                   className="w-full pl-12 pr-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary-from"
                 />
               </div>
-              <button type="submit" className="w-full btn-primary">
-                Login with Email
+              <button
+                type="submit"
+                className="w-full btn-primary disabled:opacity-50"
+                disabled={loading}
+              >
+                {loading ? (
+                  <FiLoader className="animate-spin mx-auto" />
+                ) : (
+                  'Login with Email'
+                )}
               </button>
             </form>
 
@@ -113,16 +128,26 @@ export default function LoginPage() {
             <div className="mt-6 flex flex-col md:flex-row gap-4">
                <button
                 onClick={() => handleSocialLogin(new GoogleAuthProvider())}
-                className="flex-1 flex items-center justify-center gap-2 btn-secondary"
+                className="flex-1 flex items-center justify-center gap-2 btn-secondary disabled:opacity-50"
+                disabled={loading}
               >
-                <FaGoogle />
+                {loading ? (
+                  <FiLoader className="animate-spin" />
+                ) : (
+                  <FaGoogle />
+                )}
                 Google
               </button>
               <button
                 onClick={() => handleSocialLogin(new GithubAuthProvider())}
-                className="flex-1 flex items-center justify-center gap-2 btn-secondary"
+                className="flex-1 flex items-center justify-center gap-2 btn-secondary disabled:opacity-50"
+                disabled={loading}
               >
-                <FaGithub />
+                {loading ? (
+                  <FiLoader className="animate-spin" />
+                ) : (
+                  <FaGithub />
+                )}
                 GitHub
               </button>
             </div>
