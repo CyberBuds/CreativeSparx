@@ -1,5 +1,6 @@
 
 import "./globals.css";
+import { AuthProvider } from "@/context/AuthContext";
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { Plus_Jakarta_Sans} from 'next/font/google';
 import { Suspense } from 'react';
@@ -22,7 +23,7 @@ export default function RootLayout({
       <body className="bg-background text-text-primary">
         <Suspense>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
+            <AuthProvider>{children}</AuthProvider>
           </ThemeProvider>
         </Suspense>
       </body>

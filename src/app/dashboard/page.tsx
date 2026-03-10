@@ -1,4 +1,3 @@
-import DashboardLayout from "@/components/DashboardLayout";
 import DashboardCards from "@/components/dashboard/cards";
 import RevenueChart from "@/components/dashboard/revenue-chart";
 import LatestInvoices from "@/components/dashboard/latest-invoices";
@@ -6,7 +5,7 @@ import RecentActivity from "@/components/RecentActivity";
 
 export default function DashboardPage() {
   return (
-    <DashboardLayout>
+    <>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <DashboardCards />
       </div>
@@ -21,6 +20,6 @@ export default function DashboardPage() {
       <div className="mt-6">
         <RecentActivity />
       </div>
-    </DashboardLayout>
+    </>
   );
 }

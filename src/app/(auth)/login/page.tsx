@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -34,9 +35,12 @@ export default function LoginPage() {
     setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push('/dashboard');
     } catch (error: any) {
-      setError(error.message);
+      if (error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
+        setError('Invalid email or password. Please try again.');
+      } else {
+        setError('An unexpected error occurred. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
@@ -47,16 +51,19 @@ export default function LoginPage() {
     setLoading(true);
     try {
       await signInWithPopup(auth, provider);
-      router.push('/dashboard');
     } catch (error: any) {
-      setError(error.message);
+      if (error.code === 'auth/popup-blocked') {
+        setError('Popup blocked. Please disable your popup blocker and try again.');
+      } else {
+        setError('An unexpected error occurred during social login. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
   };
 
   if (user) {
-    return null; // Or a loading spinner
+    return <div className="min-h-screen flex items-center justify-center"><FiLoader className="animate-spin text-4xl" /></div>; // Show a full-page loader while redirecting
   }
 
   return (
