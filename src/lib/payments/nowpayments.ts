@@ -1,4 +1,4 @@
-const NOWPAYMENTS_API = "https://api.nowpayments.io/v1/payment";
+const NOWPAYMENTS_API = "https://api.nowpayments.io/v1/invoice";
 
 export async function createCryptoPayment({
   invoiceId,
@@ -11,9 +11,9 @@ export async function createCryptoPayment({
   const paymentData = {
     price_amount: amount,
     price_currency: "usd",
-    pay_currency: "usdttrc20",
     order_id: invoiceId,
-    order_description: "CreativeSparx Invoice Payment"
+    order_description: "CreativeSparx Invoice Payment",
+    ipn_callback_url: "https://creative-sparx.vercel.app/api/payment/webhook"
   };
 
   const response = await fetch(NOWPAYMENTS_API, {
