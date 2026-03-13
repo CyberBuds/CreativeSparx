@@ -14,8 +14,10 @@ export default function AppContent({ children }: { children: React.ReactNode }) 
   const router = useRouter();
   const { user, loading } = useAuth();
 
-  const noDashboardRoutes = ['/', '/pricing', '/login', '/signup'];
-  const isDashboard = !noDashboardRoutes.includes(pathname);
+  const noDashboardRoutes = ['/', '/pricing', '/login', '/signup','/demo'];
+  const isDashboard = !noDashboardRoutes.some(route =>
+    pathname === route || pathname.startsWith(route + '/')
+  );
 
   useEffect(() => {
     if (isDashboard && !loading && !user) {
