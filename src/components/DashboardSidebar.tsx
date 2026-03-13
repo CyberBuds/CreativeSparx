@@ -9,6 +9,7 @@ const navigationLinks = [
   { name: 'Invoices', href: '/dashboard/invoices', icon: FiFileText },
   { name: 'Clients', href: '/dashboard/clients', icon: FiUsers },
   { name: 'Subscription', href: '/dashboard/subscription', icon: FiCreditCard },
+  { name: 'Payments', href: '/dashboard/payments', icon: FiDollarSign },
   { name: 'Pricing', href: '/pricing', icon: FiDollarSign },
   { name: 'Settings', href: '/dashboard/settings', icon: FiSettings },
 ];
@@ -16,7 +17,7 @@ const navigationLinks = [
 const demoNavigationLinks = [
   { name: 'Dashboard', href: '/demo/dashboard', icon: FiHome },
   { name: 'Invoices', href: '/demo/invoices', icon: FiFileText },
-  { name: 'Customers', href: '/demo/customers', icon: FiUsers },
+  { name: 'Clients', href: '/demo/customers', icon: FiUsers },
 ];
 
 export default function DashboardSidebar({ isDemo = false }: { isDemo?: boolean }) {
@@ -36,7 +37,7 @@ export default function DashboardSidebar({ isDemo = false }: { isDemo?: boolean 
                 key={item.name}
                 href={item.href}
                 className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors
-                  ${pathname.startsWith(item.href)
+                   ${pathname === item.href || pathname.startsWith(item.href + '/')
                     ? 'text-white bg-primary-gradient' 
                     : 'text-text-secondary hover:bg-gray-200 dark:hover:bg-gray-700'
                   }`}
