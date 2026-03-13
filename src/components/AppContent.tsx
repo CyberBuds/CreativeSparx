@@ -33,7 +33,9 @@ export default function AppContent({ children }: { children: React.ReactNode }) 
         <Toaster />
         <DemoBanner />
         <div className="flex h-screen bg-background pt-10">
+        <aside className="w-full flex-none md:w-64">
           <DashboardSidebar />
+          </aside>
           <div className="flex flex-col flex-1 w-0 overflow-hidden">
             <DashboardTopBar />
             <main className="relative flex-1 overflow-y-auto focus:outline-none">
