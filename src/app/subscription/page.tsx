@@ -1,4 +1,4 @@
-import DashboardLayout from '../../components/DashboardLayout';
+
 
 export default function SubscriptionPage() {
   const plans = [
@@ -44,7 +44,7 @@ export default function SubscriptionPage() {
   ];
 
   return (
-    <DashboardLayout>
+
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl sm:tracking-tight lg:text-6xl">Subscription</h1>
@@ -81,6 +81,6 @@ export default function SubscriptionPage() {
           ))}
         </div>
       </div>
-    </DashboardLayout>
+
   );
 }

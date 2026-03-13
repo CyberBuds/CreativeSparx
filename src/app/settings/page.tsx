@@ -4,7 +4,7 @@ import { useFormState } from 'react-dom'
 import { updateSettings, FormState } from './actions'
 import { useEffect } from 'react'
 import { toast } from 'sonner'
-import DashboardLayout from '@/components/DashboardLayout';
+
 
 const initialState: FormState = {
   message: '',
@@ -20,7 +20,7 @@ export default function SettingsPage() {
   }, [state])
 
   return (
-    <DashboardLayout>
+
       <div className="max-w-4xl mx-auto p-8">
         <h1 className="text-3xl font-bold mb-6">Settings</h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -127,6 +127,6 @@ export default function SettingsPage() {
           </div>
         </div>
       </div>
-    </DashboardLayout>
+ 
   )
 }
