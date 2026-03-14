@@ -24,7 +24,7 @@ export default function RootLayout({
         <Suspense>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <AuthProvider>
-              <AppContent>{children}</AppContent>
+           {children}
             </AuthProvider>
           </ThemeProvider>
         </Suspense>
